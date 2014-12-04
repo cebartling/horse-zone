@@ -15,3 +15,4 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'rabl'
 gem 'devise'
+gem 'rails_12factor'
