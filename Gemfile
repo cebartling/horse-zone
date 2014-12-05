@@ -15,6 +15,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'rabl'
 gem 'devise'
+gem 'foreigner'
+gem 'immigrant'
 
 group :development, :test do
   gem 'pry'
@@ -33,6 +35,7 @@ group :development do
   gem 'spring'
   gem 'bullet'
   # gem 'stripe', "~> 0.1.0"
+  # gem 'better_errors'
 end
 
 group :production, :demo do

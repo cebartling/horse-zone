@@ -67,10 +67,15 @@ GEM
     execjs (2.2.2)
     ffi (1.9.6)
     ffi (1.9.6-java)
+    foreigner (1.7.1)
+      activerecord (>= 3.0.0)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
     i18n (0.6.11)
+    immigrant (0.1.8)
+      activerecord (>= 3.0)
+      foreigner (>= 1.2.1)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -212,7 +217,9 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   devise
+  foreigner
   heroku-deflater
+  immigrant
   jbuilder (~> 2.0)
   jquery-rails
   pry
