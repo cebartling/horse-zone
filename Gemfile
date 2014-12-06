@@ -17,10 +17,15 @@ gem 'rabl'
 gem 'devise'
 gem 'foreigner'
 gem 'immigrant'
+gem 'use_case'
+gem 'virtus'
+gem 'annotate'
 
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :test do
