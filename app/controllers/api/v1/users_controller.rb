@@ -1,27 +1,17 @@
 class Api::V1::UsersController < ApplicationController
 
+  before_filter :authenticate_user!
+
+  respond_to :json
+
   def index
-    outcome = RetrieveUsers.new.execute(params)
-    # outcome.pre_condition_failed do |f|
-    #   # f.when(:user_required) { redirect_to(login_path) }
-    #   f.otherwise do
-    #     # flash[:error] = "You're not allowed to do that"
-    #     redirect_to project_path
-    #   end
-    # end
-
-    # outcome.failure do |model|
-    #   # Render form with validation errors
-    #   render :new, :locals => { :repository => model }
-    # end
-
-    outcome.success do |users|
-      @users = users
-    end
+    outcome = RetrieveUsers.new(current_user).execute(params)
+    outcome.success { |users| @users = users }
   end
 
   def show
-
+    outcome = RetrieveUser.new(current_user).execute(params)
+    outcome.success { |user| @user = user }
   end
 
   def create
