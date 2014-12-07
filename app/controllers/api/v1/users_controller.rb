@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   respond_to :json
 
@@ -15,7 +15,15 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-
+    outcome = CreateNewUser.new.execute(params)
+    outcome.success do |user|
+      render nothing: true, status: :created, location: api_v1_user_path(user)
+    end
+    outcome.failure do |failure|
+      respond_to do
+        format.json { render status: :bad_request, json: {errors: ['something was wrong']} }
+      end
+    end
   end
 
   def update

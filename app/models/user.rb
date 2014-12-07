@@ -117,3 +117,44 @@ class RetrieveUser
     step(RetrieveUserCommand.new(user))
   end
 end
+
+
+class CreateNewUserInput
+  include Virtus.model
+
+  attribute :email, String
+  attribute :password, String
+end
+
+class CreateNewUserCommand
+
+  def initialize
+  end
+
+  def execute(params)
+    new_user = User.new(email: params.email, password: params.password)
+    new_user.save!
+    new_user
+  end
+
+end
+
+NewUserValidator = UseCase::Validator.define do
+  validates_presence_of :email
+  validates_presence_of :password
+end
+
+
+class CreateNewUser
+  include UseCase
+
+  def initialize
+    input_class(CreateNewUserInput)
+    # add_pre_condition(UserRequired.new(user))
+    # add_pre_condition(ProjectAdminPrecondition.new(auth, user))
+    # A step is comprised of a command with 0, 1 or many validators
+    # (e.g. :validators => [...])
+    # The use case can span multiple steps (see below)
+    step(CreateNewUserCommand.new, validators: [NewUserValidator])
+  end
+end
