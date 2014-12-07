@@ -19,7 +19,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
     end
   end
 
-  describe '#show' do
+  describe 'GET show' do
     let!(:users) { create_list(:user, 2) }
 
     context 'user signed in' do
@@ -34,7 +34,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
     end
   end
 
-  describe '#create' do
+  describe 'POST create' do
     context 'user signed in' do
       before :each do
         sign_in user if user
@@ -113,12 +113,126 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
     end
   end
 
-  describe '#update' do
+  describe ' PUT update' do
+    let!(:user_to_update) { create(:user) }
+    let!(:original_encrypted_password) { user_to_update.encrypted_password }
+    let!(:original_email) { user_to_update.email }
+    let!(:new_email) { 'tester002@example.com' }
+    let!(:new_password) { 'P4ssW0rd9876' }
 
+    context 'user signed in' do
+      before :each do
+        sign_in user if user
+        put :update, params
+      end
+
+      context 'valid parameters' do
+        context 'update email and password' do
+          let(:params) { {id: user_to_update.id, email: new_email, password: new_password, format: :json} }
+
+          it 'return an HTTP status code of 204 (No Content)' do
+            expect(response).to be_success
+            expect(response).to have_http_status(:no_content)
+          end
+
+          it 'updates the user\'s email address' do
+            expect(User.find(user_to_update.id).email).to eq new_email
+          end
+
+          it 'updates the user\'s password' do
+            expect(User.find(user_to_update.id).encrypted_password).not_to eq original_encrypted_password
+          end
+        end
+
+        context 'update password' do
+          let(:params) { {id: user_to_update.id, password: new_password, format: :json} }
+
+          it 'return an HTTP status code of 204 (No Content)' do
+            expect(response).to be_success
+            expect(response).to have_http_status(:no_content)
+          end
+
+          it 'leaves the user\'s email address untouched' do
+            expect(User.find(user_to_update.id).email).to eq original_email
+          end
+
+          it 'updates the user\'s password' do
+            expect(User.find(user_to_update.id).encrypted_password).not_to eq original_encrypted_password
+          end
+        end
+
+        context 'update email only' do
+          let(:params) { {id: user_to_update.id, email: new_email, format: :json} }
+
+          it 'return an HTTP status code of 204 (No Content)' do
+            expect(response).to be_success
+            expect(response).to have_http_status(:no_content)
+          end
+
+          it 'updates the user\'s email address' do
+            expect(User.find(user_to_update.id).email).to eq new_email
+          end
+
+          it 'user\'s password is left untouched' do
+            expect(User.find(user_to_update.id).encrypted_password).to eq original_encrypted_password
+          end
+        end
+      end
+
+      context 'invalid parameters' do
+        let(:params) { {id: -347238, email: new_email, password: new_password, format: :json} }
+
+        it 'return an HTTP status code of 400 (Bad Request)' do
+          expect(response).to have_http_status(:bad_request)
+        end
+
+        it 'leaves the user\'s email address unchanged' do
+          expect(User.find(user_to_update.id).email).to eq original_email
+        end
+
+        it 'leaves the user\'s password changed' do
+          expect(User.find(user_to_update.id).encrypted_password).to eq original_encrypted_password
+        end
+      end
+    end
   end
 
   describe '#destroy' do
+    let!(:user_to_delete) { create(:user) }
+
+    context 'user signed in' do
+      before :each do
+        sign_in user if user
+        delete :destroy, params
+      end
+
+      context 'valid parameters' do
+        context 'update email and password' do
+          let(:params) { {id: user_to_delete.id, format: :json} }
+
+          it 'return an HTTP status code of 204 (No Content)' do
+            expect(response).to be_success
+            expect(response).to have_http_status(:no_content)
+          end
+
+          it 'removes the user from the database' do
+            expect(User.where(id: user_to_delete.id).count).to eq 0
+          end
+        end
+
+        context 'invalid parameters' do
+          let(:params) { {id: -347238, format: :json} }
+
+          it 'return an HTTP status code of 400 (Bad Request)' do
+            expect(response).to have_http_status(:bad_request)
+          end
+
+          it 'leaves the user unchanged' do
+            expect(User.where(id: user_to_delete.id).count).to eq 1
+          end
+        end
+      end
+    end
 
   end
-
 end
