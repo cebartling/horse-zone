@@ -17,11 +17,13 @@ class Api::V1::UsersController < ApplicationController
   def create
     outcome = CreateNewUser.new.execute(params)
     outcome.success do |user|
-      render nothing: true, status: :created, location: api_v1_user_path(user)
+      respond_to do |format|
+        format.json { render nothing: true, status: :created, location: api_v1_user_path(user) }
+      end
     end
     outcome.failure do |failure|
-      respond_to do
-        format.json { render status: :bad_request, json: {errors: ['something was wrong']} }
+      respond_to do |format|
+        format.json { render status: :bad_request, json: {errors: [failure.errors]} }
       end
     end
   end
