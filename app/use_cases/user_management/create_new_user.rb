@@ -1,4 +1,5 @@
 require_relative 'validators'
+require_relative 'pre_conditions'
 
 module UserManagement
   class CreateNewUserInput

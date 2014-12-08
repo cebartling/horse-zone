@@ -29,7 +29,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    outcome = UpdateExistingUser.new.execute(params)
+    outcome = UserManagement::UpdateExistingUser.new.execute(params)
     outcome.pre_condition_failed do |failure|
       failure.otherwise do |pre_condition|
         respond_to do |format|
@@ -50,7 +50,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def destroy
-    outcome = DeleteExistingUser.new.execute(params)
+    outcome = UserManagement::DeleteExistingUser.new.execute(params)
     outcome.pre_condition_failed do |failure|
       failure.otherwise do |pre_condition|
         respond_to do |format|
