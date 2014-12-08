@@ -15,7 +15,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    outcome = CreateNewUser.new.execute(params)
+    outcome = UserManagement::CreateNewUser.new.execute(params)
     outcome.success do |user|
       respond_to do |format|
         format.json { render nothing: true, status: :created, location: api_v1_user_path(user) }
