@@ -5,12 +5,12 @@ class Api::V1::UsersController < ApplicationController
   respond_to :json
 
   def index
-    outcome = RetrieveUsers.new(current_user).execute(params)
+    outcome = UserManagement::RetrieveUsers.new(current_user).execute(params)
     outcome.success { |users| @users = users }
   end
 
   def show
-    outcome = RetrieveUser.new(current_user).execute(params)
+    outcome = UserManagement::RetrieveUser.new(current_user).execute(params)
     outcome.success { |user| @user = user }
   end
 
