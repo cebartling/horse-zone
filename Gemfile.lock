@@ -251,7 +251,7 @@ DEPENDENCIES
   immigrant
   jbuilder (~> 2.0)
   jquery-rails
-  jruby-openssl (~> 0.9.6)
+  jruby-openssl
   pry
   puma
   quiet_assets
