@@ -22,6 +22,7 @@ gem 'use_case'
 gem 'virtus'
 gem 'annotate'
 gem 'uuidtools'
+gem 'rollbar', '~> 1.3.0'
 
 group :development, :test do
   gem 'pry'
