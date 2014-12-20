@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.16.1'
+ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.17'
 
 gem 'rails', '4.1.8'
 gem 'activerecord-jdbcpostgresql-adapter'
-gem 'jruby-openssl', '0.9.5'
+gem 'jruby-openssl', '~> 0.9.6'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
