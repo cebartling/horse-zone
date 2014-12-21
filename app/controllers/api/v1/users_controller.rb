@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApplicationController
 
-  before_action :authenticate_user!
+  skip_before_filter :verify_authenticity_token, :only => :create
+  # before_action :authenticate_user!
 
   respond_to :json
 
