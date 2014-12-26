@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+class Customer::PortalController < ApplicationController
 
   before_action :authenticate_user!
 

@@ -1,29 +1,104 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Horse Zone</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+      </ul>
+    </div>
+    <!--/.nav-collapse -->
   </div>
+</nav>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+<div class="container theme-showcase" role="main">
+  <div class="row">
+    <% unless flash[:alert].nil? %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <strong>Whoa!</strong> <%= flash[:alert] %>
+        </div>
+    <% end %>
+    <%= devise_error_messages! %>
   </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3 class="panel-title"><strong>Account registration</strong></h3></div>
+        <div class="panel-body">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal', role: 'form', novalidate: true}) do |f| %>
+              <div class="form-group has-feedback">
+                <label class="control-label col-sm-5" for="email">Email address</label>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                <div class="col-sm-7">
+                  <input type="email"
+                         class="form-control"
+                         name="email"
+                         id="email"
+                         placeholder="joe.smith@example.com"
+                         required
+                         autofocus>
+                </div>
+              </div>
+
+              <div class="form-group has-feedback">
+                <label class="control-label col-sm-5" for="password">Password</label>
+
+                <div class="col-sm-7">
+                  <input type="password"
+                         class="form-control"
+                         name="password"
+                         id="password"
+                         placeholder="password"
+                         aria-describedby="passwordInputStatus"
+                         required
+                         autocomplete="off">
+                </div>
+              </div>
+
+              <div class="form-group has-feedback">
+                <label class="control-label col-sm-5" for="passwordInput">Password confirmation</label>
+
+                <div class="col-sm-7">
+                  <input type="password"
+                         class="form-control"
+                         name="password_confirmation"
+                         id="password_confirmation"
+                         placeholder="password"
+                         aria-describedby="passwordConfirmationInputStatus"
+                         required
+                         autocomplete="off">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-4">
+                  &nbsp;
+                </div>
+                <div class="col-sm-8">
+                  <button type="submit" class="btn btn-primary btn-default">Sign up</button>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3"><%= link_to "Already have an account?", new_session_path(resource_name) %></div>
+    <div class="col-md-3 text-right"><%= link_to "Forgot your password?", new_password_path(resource_name) %></div>
+    <div class="col-md-3"></div>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
