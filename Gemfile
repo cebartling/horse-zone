@@ -23,6 +23,7 @@ gem 'virtus'
 gem 'annotate'
 gem 'uuidtools'
 gem 'rollbar', '~> 1.3.0'
+gem 'icalendar'
 
 group :development, :test do
   gem 'pry'
