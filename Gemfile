@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'rabl'
 gem 'devise'
+gem 'cancan'
 gem 'foreigner'
 gem 'immigrant'
 gem 'use_case'
