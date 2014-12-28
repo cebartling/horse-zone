@@ -1,5 +1,9 @@
 FactoryGirl.define do
 
+  factory :instructor do
+  end
+
+
   factory :stable, class: Stable do
     sequence(:name) {|n| "Happy Trails ##{n} Stables" }
   end
