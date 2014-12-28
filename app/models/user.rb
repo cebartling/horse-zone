@@ -17,8 +17,6 @@
 #  updated_at             :datetime
 #
 
-require 'use_case'
-require 'virtus'
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
