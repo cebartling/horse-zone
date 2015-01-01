@@ -1,2 +1,2 @@
-rvm use --create jruby-1.7.17@horse-zone
+rvm use --create jruby-1.7.18@horse-zone
 export JRUBY_OPTS=--1.9
