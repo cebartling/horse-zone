@@ -1,8 +1,5 @@
 class Api::V1::UsersController < ApplicationController
 
-  skip_before_filter :verify_authenticity_token, :only => :create
-  # before_action :authenticate_user!
-
   respond_to :json
 
   def index
@@ -24,7 +21,7 @@ class Api::V1::UsersController < ApplicationController
     end
     outcome.failure do |failure|
       respond_to do |format|
-        format.json { render status: :bad_request, json: {errors: [failure.errors]} }
+        format.json { render status: :unprocessable_entity, json: {errors: [failure.errors]} }
       end
     end
   end

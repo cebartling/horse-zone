@@ -1,40 +1,33 @@
 # == Route Map
 #
-#                   Prefix Verb   URI Pattern                      Controller#Action
-#         new_user_session GET    /users/sign_in(.:format)         devise/sessions#new
-#             user_session POST   /users/sign_in(.:format)         devise/sessions#create
-#     destroy_user_session DELETE /users/sign_out(.:format)        devise/sessions#destroy
-#            user_password POST   /users/password(.:format)        devise/passwords#create
-#        new_user_password GET    /users/password/new(.:format)    devise/passwords#new
-#       edit_user_password GET    /users/password/edit(.:format)   devise/passwords#edit
-#                          PATCH  /users/password(.:format)        devise/passwords#update
-#                          PUT    /users/password(.:format)        devise/passwords#update
-# cancel_user_registration GET    /users/cancel(.:format)          devise/registrations#cancel
-#        user_registration POST   /users(.:format)                 devise/registrations#create
-#    new_user_registration GET    /users/sign_up(.:format)         devise/registrations#new
-#   edit_user_registration GET    /users/edit(.:format)            devise/registrations#edit
-#                          PATCH  /users(.:format)                 devise/registrations#update
-#                          PUT    /users(.:format)                 devise/registrations#update
-#                          DELETE /users(.:format)                 devise/registrations#destroy
-#                     root GET    /                                welcome#index
-#             api_v1_users GET    /api/v1/users(.:format)          api/v1/users#index
-#                          POST   /api/v1/users(.:format)          api/v1/users#create
-#          new_api_v1_user GET    /api/v1/users/new(.:format)      api/v1/users#new
-#         edit_api_v1_user GET    /api/v1/users/:id/edit(.:format) api/v1/users#edit
-#              api_v1_user GET    /api/v1/users/:id(.:format)      api/v1/users#show
-#                          PATCH  /api/v1/users/:id(.:format)      api/v1/users#update
-#                          PUT    /api/v1/users/:id(.:format)      api/v1/users#update
-#                          DELETE /api/v1/users/:id(.:format)      api/v1/users#destroy
+#              Prefix Verb   URI Pattern                         Controller#Action
+#                root GET    /                                   welcome#index
+#        api_v1_users GET    /api/v1/users(.:format)             api/v1/users#index {:format=>"json"}
+#                     POST   /api/v1/users(.:format)             api/v1/users#create {:format=>"json"}
+#     new_api_v1_user GET    /api/v1/users/new(.:format)         api/v1/users#new {:format=>"json"}
+#    edit_api_v1_user GET    /api/v1/users/:id/edit(.:format)    api/v1/users#edit {:format=>"json"}
+#         api_v1_user GET    /api/v1/users/:id(.:format)         api/v1/users#show {:format=>"json"}
+#                     PATCH  /api/v1/users/:id(.:format)         api/v1/users#update {:format=>"json"}
+#                     PUT    /api/v1/users/:id(.:format)         api/v1/users#update {:format=>"json"}
+#                     DELETE /api/v1/users/:id(.:format)         api/v1/users#destroy {:format=>"json"}
+#     api_v1_sessions GET    /api/v1/sessions(.:format)          api/v1/sessions#index {:format=>"json"}
+#                     POST   /api/v1/sessions(.:format)          api/v1/sessions#create {:format=>"json"}
+#  new_api_v1_session GET    /api/v1/sessions/new(.:format)      api/v1/sessions#new {:format=>"json"}
+# edit_api_v1_session GET    /api/v1/sessions/:id/edit(.:format) api/v1/sessions#edit {:format=>"json"}
+#      api_v1_session GET    /api/v1/sessions/:id(.:format)      api/v1/sessions#show {:format=>"json"}
+#                     PATCH  /api/v1/sessions/:id(.:format)      api/v1/sessions#update {:format=>"json"}
+#                     PUT    /api/v1/sessions/:id(.:format)      api/v1/sessions#update {:format=>"json"}
+#                     DELETE /api/v1/sessions/:id(.:format)      api/v1/sessions#destroy {:format=>"json"}
 #
 
 Rails.application.routes.draw do
-  devise_for :users
 
   root to: 'welcome#index'
 
   namespace :api do
     namespace :v1 do
       resources :users, defaults: {format: 'json'}
+      resources :sessions, defaults: {format: 'json'}
     end
   end
 
