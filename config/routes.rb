@@ -1,35 +1,56 @@
-# == Route Map
-#
-#              Prefix Verb   URI Pattern                         Controller#Action
-#                root GET    /                                   welcome#index
-#        api_v1_users GET    /api/v1/users(.:format)             api/v1/users#index {:format=>"json"}
-#                     POST   /api/v1/users(.:format)             api/v1/users#create {:format=>"json"}
-#     new_api_v1_user GET    /api/v1/users/new(.:format)         api/v1/users#new {:format=>"json"}
-#    edit_api_v1_user GET    /api/v1/users/:id/edit(.:format)    api/v1/users#edit {:format=>"json"}
-#         api_v1_user GET    /api/v1/users/:id(.:format)         api/v1/users#show {:format=>"json"}
-#                     PATCH  /api/v1/users/:id(.:format)         api/v1/users#update {:format=>"json"}
-#                     PUT    /api/v1/users/:id(.:format)         api/v1/users#update {:format=>"json"}
-#                     DELETE /api/v1/users/:id(.:format)         api/v1/users#destroy {:format=>"json"}
-#     api_v1_sessions GET    /api/v1/sessions(.:format)          api/v1/sessions#index {:format=>"json"}
-#                     POST   /api/v1/sessions(.:format)          api/v1/sessions#create {:format=>"json"}
-#  new_api_v1_session GET    /api/v1/sessions/new(.:format)      api/v1/sessions#new {:format=>"json"}
-# edit_api_v1_session GET    /api/v1/sessions/:id/edit(.:format) api/v1/sessions#edit {:format=>"json"}
-#      api_v1_session GET    /api/v1/sessions/:id(.:format)      api/v1/sessions#show {:format=>"json"}
-#                     PATCH  /api/v1/sessions/:id(.:format)      api/v1/sessions#update {:format=>"json"}
-#                     PUT    /api/v1/sessions/:id(.:format)      api/v1/sessions#update {:format=>"json"}
-#                     DELETE /api/v1/sessions/:id(.:format)      api/v1/sessions#destroy {:format=>"json"}
-#
-
 Rails.application.routes.draw do
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
 
-  devise_for :users
-  root to: 'welcome#index'
+  # You can have the root of your site routed with "root"
+  # root 'welcome#index'
 
-  namespace :api do
-    namespace :v1 do
-      resources :users, defaults: {format: 'json'}
-      resources :sessions, defaults: {format: 'json'}
-    end
-  end
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
 
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
+  # Example resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
+
+  # Example resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
+
+  # Example resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Example resource route with more complex sub-resources:
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', on: :collection
+  #     end
+  #   end
+
+  # Example resource route with concerns:
+  #   concern :toggleable do
+  #     post 'toggle'
+  #   end
+  #   resources :posts, concerns: :toggleable
+  #   resources :photos, concerns: :toggleable
+
+  # Example resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
 end
