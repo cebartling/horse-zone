@@ -23,6 +23,8 @@ gem 'uuidtools'
 gem 'rollbar', '~> 1.3.0'
 gem 'icalendar'
 gem 'responders'
+gem 'devise'
+gem 'simple_token_authentication', '~> 1.0'
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
