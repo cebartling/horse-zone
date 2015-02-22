@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.18'
+#ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.18'
+ruby '2.2.0'
 
 gem 'rails', '4.2.0'
 
-gem 'activerecord-jdbcpostgresql-adapter'
-gem 'jruby-openssl', '0.9.5'       # This should be fixed at some point on CodeShip
+#gem 'activerecord-jdbcpostgresql-adapter'
+#gem 'jruby-openssl', '0.9.5'       # This should be fixed at some point on CodeShip
+
+gem 'pg'
+
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyrhino'
@@ -19,16 +23,17 @@ gem 'use_case'
 gem 'virtus'
 gem 'annotate'
 gem 'uuidtools'
-gem 'rollbar', '~> 1.3.0'
+gem 'rollbar'
 gem 'icalendar'
 gem 'responders'
 gem 'devise'
 gem 'devise-token_authenticatable', '~> 0.3.0'
 gem 'bcrypt', '~> 3.1.7'
+gem 'stripe'
 
 group :development, :test do
   gem 'pry'
-  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-rails', '~> 3.2.0'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
@@ -44,8 +49,7 @@ group :development do
   gem 'quiet_assets'
   gem 'spring'
   gem 'bullet'
-  # gem 'stripe', "~> 0.1.0"
-  # gem 'better_errors'
+  gem 'better_errors'
 end
 
 group :production, :demo do
