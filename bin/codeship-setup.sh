@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash --login
 
 export RUBY_VERSION="ruby-2.2.0"
 
