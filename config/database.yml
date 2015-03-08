@@ -6,6 +6,7 @@ default: &default
 development:
   <<: *default
   host: localhost
+  port: 49255
   database: horse_zone_development
   username: postgres
   password: postgres
@@ -13,6 +14,7 @@ development:
 test:
   <<: *default
   host: localhost
+  port: 49255
   database: horse_zone_test
   username: postgres
   password: postgres
