@@ -33,7 +33,7 @@ gem 'stripe'
 
 group :development, :test do
   gem 'pry'
-  gem 'rspec-rails', '~> 3.2.0'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
