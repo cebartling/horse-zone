@@ -32,6 +32,7 @@ gem 'jwt'
 gem 'rack-cors'
 gem 'bcrypt', '~> 3.1.7'
 gem 'stripe'
+gem 'capistrano', '~> 3.3.0'
 
 group :development, :test do
   gem 'pry'
