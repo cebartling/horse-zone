@@ -115,6 +115,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.2)
     json (1.8.2-java)
+    jwt (1.4.1)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -148,6 +149,7 @@ GEM
     rabl (0.11.6)
       activesupport (>= 2.3.14)
     rack (1.6.0)
+    rack-cors (0.3.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -282,11 +284,13 @@ DEPENDENCIES
   icalendar
   jbuilder (~> 2.0)
   jquery-rails
+  jwt
   pg
   pry
   puma
   quiet_assets
   rabl
+  rack-cors
   rails (= 4.2.1)
   rails_12factor
   responders

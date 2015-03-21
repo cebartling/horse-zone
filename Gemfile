@@ -28,6 +28,8 @@ gem 'icalendar'
 gem 'responders'
 gem 'devise'
 gem 'devise-token_authenticatable', '~> 0.3.0'
+gem 'jwt'
+gem 'rack-cors'
 gem 'bcrypt', '~> 3.1.7'
 gem 'stripe'
 
