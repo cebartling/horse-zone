@@ -1,3 +1,7 @@
+require 'errors'
+require 'auth_token'
+require 'decoded_auth_token'
+
 class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
