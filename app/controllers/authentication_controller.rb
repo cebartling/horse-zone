@@ -2,6 +2,8 @@ class AuthenticationController < ApplicationController
 
   skip_before_action :authenticate_request
 
+  respond_to :json
+
   def authenticate
     user = User.find_by_email_address(params[:email_address])
 
