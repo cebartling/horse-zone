@@ -1,18 +1,19 @@
 require 'jwt'
 
-module AuthToken
+class AuthToken
 
-  def AuthToken.issue_token(payload)
-    payload['expiration_timestamp'] = 24.hours.from_now.to_i # Set expiration to 24 hours.
+  def self.encode(payload, exp=24.hours.from_now)
+    payload[:exp] = exp.to_i
     JWT.encode(payload, Rails.application.secrets.secret_key_base)
   end
 
-  def AuthToken.valid?(token)
-    begin
-      JWT.decode(token, Rails.application.secrets.secret_key_base)
-    rescue
-      false
-    end
+  def self.decode(token)
+    payload = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
+    DecodedAuthToken.new(payload)
+  rescue
+    # It will raise an error if it is not a token that was generated with our
+    # secret key or if the user changes the contents of the payload.
+    nil
   end
 
 end
