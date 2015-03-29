@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :email_address, null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :password_digest, null: false, default: ""
       t.string :first_name
       t.string :last_name
 
