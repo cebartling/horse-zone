@@ -10,7 +10,9 @@ RSpec.describe Api::UsersController, type: :controller do
     context 'routing' do
       it 'is configured correctly' do
         request.host = "api.example.com"
-        expect({:get => "http://#{request.host}/api/users"}).to route_to(controller: 'api/users', action: 'index')
+        expect({:get => "http://#{request.host}/api/users.json"}).to route_to(controller: 'api/users',
+                                                                              action: 'index',
+                                                                              format: 'json')
       end
     end
 
@@ -26,7 +28,9 @@ RSpec.describe Api::UsersController, type: :controller do
     context 'routing' do
       it 'is configured correctly' do
         request.host = "api.example.com"
-        expect({:post => "http://#{request.host}/api/users"}).to route_to(controller: 'api/users', action: 'create')
+        expect({:post => "http://#{request.host}/api/users.json"}).to route_to(controller: 'api/users',
+                                                                               action: 'create',
+                                                                               format: 'json')
       end
     end
 
@@ -37,9 +41,10 @@ RSpec.describe Api::UsersController, type: :controller do
     context 'routing' do
       it 'is configured correctly' do
         request.host = "api.example.com"
-        expect({:put => "http://#{request.host}/api/users/1"}).to route_to(controller: 'api/users',
-                                                                           action: 'update',
-                                                                           id: '1')
+        expect({:put => "http://#{request.host}/api/users/1.json"}).to route_to(controller: 'api/users',
+                                                                                action: 'update',
+                                                                                id: '1',
+                                                                                format: 'json')
       end
     end
 
@@ -50,9 +55,10 @@ RSpec.describe Api::UsersController, type: :controller do
     context 'routing' do
       it 'is configured correctly' do
         request.host = "api.example.com"
-        expect({:delete => "http://#{request.host}/api/users/1"}).to route_to(controller: 'api/users',
-                                                                              action: 'destroy',
-                                                                              id: '1')
+        expect({:delete => "http://#{request.host}/api/users/1.json"}).to route_to(controller: 'api/users',
+                                                                                   action: 'destroy',
+                                                                                   id: '1',
+                                                                                   format: 'json')
       end
     end
 
