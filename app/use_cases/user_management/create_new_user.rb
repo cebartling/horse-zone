@@ -5,13 +5,15 @@ module UserManagement
   class CreateNewUserInput
     include Virtus.model
 
-    attribute :email, String
+    attribute :email_address, String
     attribute :password, String
+    attribute :first_name, String
+    attribute :last_name, String
   end
 
   class CreateNewUserCommand
     def execute(params)
-      new_user = User.new(email: params.email, password: params.password)
+      new_user = User.new(email_address: params.email_address, password: params.password)
       new_user.save!
       new_user
     end
