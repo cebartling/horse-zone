@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe UserManagement::UpdateExistingUser do
-
   describe '#execute' do
     let(:use_case) { UserManagement::UpdateExistingUser.new }
     let(:existing_user) { FactoryGirl.create(:user) }
@@ -51,6 +50,7 @@ RSpec.describe UserManagement::UpdateExistingUser do
             :last_name => 'Smith'
           }
         }
+        let(:expected_message) { "User identifier '' does not point to a valid user record in the database." }
 
         it 'should fail execution' do
           expect(@outcome.success?).to be_falsey
