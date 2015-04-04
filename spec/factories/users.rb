@@ -12,8 +12,8 @@
 # *last_sign_in_at*::    <tt>datetime</tt>
 # *current_sign_in_ip*:: <tt>string</tt>
 # *last_sign_in_ip*::    <tt>string</tt>
-# *created_at*::         <tt>datetime</tt>
-# *updated_at*::         <tt>datetime</tt>
+# *created_at*::         <tt>datetime, not null</tt>
+# *updated_at*::         <tt>datetime, not null</tt>
 #
 # Indexes
 #

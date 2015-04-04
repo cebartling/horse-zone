@@ -4,7 +4,7 @@ class AddTenantsTable < ActiveRecord::Migration
     create_table :tenants do |t|
       t.string :name, null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :tenants, :name, unique: true
