@@ -9,23 +9,17 @@ module UserManagement
   end
 
   class RetrieveUsersCommand
-
-    def initialize(user)
-      @user = user
-    end
-
     def execute(params)
       User.all
     end
-
   end
 
   class RetrieveUsers
     include UseCase
 
-    def initialize(user)
+    def initialize
       input_class(RetrieveUsersInput)
-      step(RetrieveUsersCommand.new(user))
+      step(RetrieveUsersCommand.new)
     end
   end
 

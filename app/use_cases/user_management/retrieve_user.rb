@@ -10,22 +10,20 @@ module UserManagement
   end
 
   class RetrieveUserCommand
-
-    def initialize(user)
-      @user = user
-    end
-
     def execute(params)
-      User.find(params.id)
+      if params.id
+        User.find(params.id)
+      end
     end
   end
 
   class RetrieveUser
     include UseCase
 
-    def initialize(user)
+    def initialize()
       input_class(UserManagement::RetrieveUserInput)
-      step(UserManagement::RetrieveUserCommand.new(user))
+      add_pre_condition(UserManagement::UserExistsPrecondition.new)
+      step(UserManagement::RetrieveUserCommand.new)
     end
   end
 end
