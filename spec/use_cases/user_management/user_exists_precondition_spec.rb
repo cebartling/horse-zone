@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserManagement::CreateNewUser do
+RSpec.describe UserManagement::UserExistsPrecondition do
 
   class TestInput
     include Virtus.model
