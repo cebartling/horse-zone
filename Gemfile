@@ -37,6 +37,7 @@ gem 'capistrano'
 gem 'swagger-blocks'
 gem 'rubocop', require: false
 gem 'rubocop-rspec'
+gem "newrelic_rpm"
 
 group :development, :test do
   gem 'pry'
@@ -87,7 +88,6 @@ end
 # gem "html-pipeline"
 # gem "rinku"
 
-# gem "newrelic_rpm"
 # gem 'doc_raptor'
 # gem "stripe"
 # gem "jquery-ui-rails"
