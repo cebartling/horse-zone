@@ -1,7 +1,6 @@
 require_relative 'tenant_management'
 
 module TenantManagement
-
   class DeleteExistingTenantInput
     include Virtus.model
 
@@ -23,5 +22,4 @@ module TenantManagement
       step(TenantManagement::DeleteExistingTenantCommand.new, validators: [TenantManagement::DeleteExistingTenantValidator])
     end
   end
-
 end

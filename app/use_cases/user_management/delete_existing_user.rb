@@ -2,7 +2,6 @@ require_relative 'validators'
 require_relative 'pre_conditions'
 
 module UserManagement
-
   class DeleteExistingUserInput
     include Virtus.model
 
@@ -24,5 +23,4 @@ module UserManagement
       step(UserManagement::DeleteExistingUserCommand.new, validators: [UserManagement::DeleteExistingUserValidator])
     end
   end
-
 end

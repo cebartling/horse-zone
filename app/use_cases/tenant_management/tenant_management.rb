@@ -1,5 +1,4 @@
 module TenantManagement
-
   NewTenantValidator = UseCase::Validator.define do
     validates_presence_of :name
   end
@@ -23,6 +22,4 @@ module TenantManagement
       false
     end
   end
-
-
 end

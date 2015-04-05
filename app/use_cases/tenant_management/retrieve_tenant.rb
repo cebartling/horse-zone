@@ -1,7 +1,6 @@
 require_relative 'tenant_management'
 
 module TenantManagement
-
   class RetrieveTenantInput
     include Virtus.model
 
@@ -19,7 +18,7 @@ module TenantManagement
   class RetrieveTenant
     include UseCase
 
-    def initialize()
+    def initialize
       input_class(TenantManagement::RetrieveTenantInput)
       add_pre_condition(TenantManagement::TenantExistsPrecondition.new)
       step(TenantManagement::RetrieveTenantCommand.new)

@@ -1,5 +1,4 @@
 class AddTenantsTable < ActiveRecord::Migration
-
   def change
     create_table :tenants do |t|
       t.string :name, null: false

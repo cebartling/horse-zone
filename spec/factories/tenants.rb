@@ -15,9 +15,7 @@
 #++
 
 FactoryGirl.define do
-
   factory :tenant, class: Tenant do
     sequence(:name) { |n| "Horse Barn #{n}" }
   end
-
 end

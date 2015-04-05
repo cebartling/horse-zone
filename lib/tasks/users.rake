@@ -1,6 +1,5 @@
 namespace :users do
-
-  task :load => :environment do
+  task load: :environment do
     PASSWORD = 'pwd12345'
 
     puts 'Adding users...'
@@ -13,5 +12,4 @@ namespace :users do
       puts "   Added '#{user.email_address}' with password of '#{PASSWORD}'."
     end
   end
-
 end

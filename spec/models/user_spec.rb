@@ -24,20 +24,19 @@
 
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-
-  describe "create new user" do
-    let(:user) {
-      User.new(email_address: 'joe.smith001@gmailsnail.co',
-               password: 'p4$$w0rD',
-               password_confirmation: 'p4$$w0rD')
-    }
+RSpec.describe User, type: :model do
+  describe 'create new user' do
+    let(:user) do
+      described_class.new(email_address: 'joe.smith001@gmailsnail.co',
+                          password: 'p4$$w0rD',
+                          password_confirmation: 'p4$$w0rD')
+    end
 
     it 'is successful' do
       expect(user.save).to be_truthy
     end
 
-    context "authentication" do
+    context 'authentication' do
       before :each do
         user.save!
       end
@@ -51,5 +50,4 @@ RSpec.describe User, :type => :model do
       end
     end
   end
-
 end

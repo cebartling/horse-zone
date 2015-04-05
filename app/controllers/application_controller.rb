@@ -3,7 +3,6 @@ require 'auth_token'
 require 'decoded_auth_token'
 
 class ApplicationController < ActionController::Base
-
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :null_session
@@ -11,10 +10,10 @@ class ApplicationController < ActionController::Base
   before_action :set_current_user, :authenticate_request
 
   rescue_from NotAuthenticatedError do
-    render json: {error: 'Not Authorized'}, status: :unauthorized
+    render json: { error: 'Not Authorized' }, status: :unauthorized
   end
   rescue_from AuthenticationTimeoutError do
-    render json: {error: 'Auth token is expired'}, status: 419 # unofficial timeout status code
+    render json: { error: 'Auth token is expired' }, status: 419 # unofficial timeout status code
   end
 
   private
@@ -55,5 +54,4 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
 end

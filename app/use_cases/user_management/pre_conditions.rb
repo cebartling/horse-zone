@@ -1,5 +1,4 @@
 module UserManagement
-
   class UserExistsPrecondition
     attr_reader :message
 
@@ -11,5 +10,4 @@ module UserManagement
       false
     end
   end
-
 end

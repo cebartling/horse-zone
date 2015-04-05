@@ -1,14 +1,12 @@
 require_relative 'tenant_management'
 
 module TenantManagement
-
   class RetrieveTenantsInput
     include Virtus.model
-
   end
 
   class RetrieveTenantsCommand
-    def execute(params)
+    def execute(_params)
       Tenant.all
     end
   end
@@ -21,5 +19,4 @@ module TenantManagement
       step(TenantManagement::RetrieveTenantsCommand.new)
     end
   end
-
 end

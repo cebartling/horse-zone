@@ -1,5 +1,4 @@
 class Api::UsersController < ApplicationController
-
   respond_to :json
 
   def index
@@ -11,7 +10,7 @@ class Api::UsersController < ApplicationController
     respond_to do |format|
       # if user.errors
       #   format.json { render json: user, status: :created, location: user }
-        format.json { render json: {}, status: :created }
+      format.json { render json: {}, status: :created }
       # else
       #   format.json { render json: user.errors, status: :unprocessable_entity }
       # end
@@ -35,5 +34,4 @@ class Api::UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 end

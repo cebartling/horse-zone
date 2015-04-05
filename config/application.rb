@@ -25,6 +25,5 @@ module HorseZone
 
     # Sets the queue adapter for Active Job.
     config.active_job.queue_adapter = :delayed_job
-
   end
 end

@@ -1,49 +1,48 @@
 require 'rails_helper'
 
 RSpec.describe Api::UsersController, type: :controller do
-
   let!(:current_user) { FactoryGirl.create(:user) }
 
   describe 'routing configuration' do
     it 'GET #index' do
-      request.host = "api.example.com"
-      expect({:get => "http://#{request.host}/api/users.json"}).to route_to(controller: 'api/users',
-                                                                            action: 'index',
-                                                                            format: 'json')
+      request.host = 'api.example.com'
+      expect(get: "http://#{request.host}/api/users.json").to route_to(controller: 'api/users',
+                                                                       action: 'index',
+                                                                       format: 'json')
     end
 
     it 'POST #create' do
-      request.host = "api.example.com"
-      expect({:post => "http://#{request.host}/api/users.json"}).to route_to(controller: 'api/users',
-                                                                             action: 'create',
-                                                                             format: 'json')
+      request.host = 'api.example.com'
+      expect(post: "http://#{request.host}/api/users.json").to route_to(controller: 'api/users',
+                                                                        action: 'create',
+                                                                        format: 'json')
     end
 
     it 'PUT #update' do
-      request.host = "api.example.com"
-      expect({:put => "http://#{request.host}/api/users/1.json"}).to route_to(controller: 'api/users',
-                                                                              action: 'update',
-                                                                              id: '1',
-                                                                              format: 'json')
+      request.host = 'api.example.com'
+      expect(put: "http://#{request.host}/api/users/1.json").to route_to(controller: 'api/users',
+                                                                         action: 'update',
+                                                                         id: '1',
+                                                                         format: 'json')
     end
 
     it 'DELETE #destroy' do
-      request.host = "api.example.com"
-      expect({:delete => "http://#{request.host}/api/users/1.json"}).to route_to(controller: 'api/users',
-                                                                                 action: 'destroy',
-                                                                                 id: '1',
-                                                                                 format: 'json')
+      request.host = 'api.example.com'
+      expect(delete: "http://#{request.host}/api/users/1.json").to route_to(controller: 'api/users',
+                                                                            action: 'destroy',
+                                                                            id: '1',
+                                                                            format: 'json')
     end
   end
 
   describe 'GET #index' do
     let!(:users) { FactoryGirl.create_list(:user, 25) }
 
-    let(:params) {
+    let(:params) do
       {
         format: :json
       }
-    }
+    end
 
     context 'user is authenticated to the system' do
       before :each do
@@ -68,11 +67,11 @@ RSpec.describe Api::UsersController, type: :controller do
   end
 
   describe 'POST #create' do
-    let(:params) {
+    let(:params) do
       {
         format: :json
       }
-    }
+    end
 
     context 'user is authenticated to the system' do
       before :each do
@@ -97,12 +96,12 @@ RSpec.describe Api::UsersController, type: :controller do
   end
 
   describe 'PUT #update' do
-    let(:params) {
+    let(:params) do
       {
         format: :json,
         id: '1'
       }
-    }
+    end
 
     context 'user is authenticated to the system' do
       before :each do
@@ -127,12 +126,12 @@ RSpec.describe Api::UsersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    let(:params) {
+    let(:params) do
       {
         format: :json,
         id: '1'
       }
-    }
+    end
 
     context 'user is authenticated to the system' do
       before :each do

@@ -1,18 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe TenantManagement::CreateNewTenant do
-
   describe '#execute' do
-    let(:use_case) { TenantManagement::CreateNewTenant.new }
+    let(:use_case) { described_class.new }
 
     before :each do
       @outcome = use_case.execute(params)
     end
 
     context 'happy path' do
-      let(:params) {
-        {:name => 'Big Barn Horses'}
-      }
+      let(:params) do
+        { name: 'Big Barn Horses' }
+      end
 
       it 'should execute successfully' do
         expect(@outcome.success?).to be_truthy
@@ -29,12 +28,12 @@ RSpec.describe TenantManagement::CreateNewTenant do
 
     context 'invalid parameters' do
       context 'missing name' do
-        let(:params) {
+        let(:params) do
           {}
-        }
-        let(:expected_messages) {
-          {name: ["can't be blank"]}
-        }
+        end
+        let(:expected_messages) do
+          { name: ["can't be blank"] }
+        end
 
         it 'should fail execution' do
           expect(@outcome.success?).to be_falsey

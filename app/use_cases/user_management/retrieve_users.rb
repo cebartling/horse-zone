@@ -2,14 +2,12 @@ require_relative 'validators'
 require_relative 'pre_conditions'
 
 module UserManagement
-
   class RetrieveUsersInput
     include Virtus.model
-
   end
 
   class RetrieveUsersCommand
-    def execute(params)
+    def execute(_params)
       User.all
     end
   end
@@ -22,5 +20,4 @@ module UserManagement
       step(RetrieveUsersCommand.new)
     end
   end
-
 end
