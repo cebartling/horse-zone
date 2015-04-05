@@ -24,7 +24,7 @@
 
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :tenants
+  has_and_belongs_to_many :tenants
 
   def generate_auth_token
     payload = { user_id: id }
