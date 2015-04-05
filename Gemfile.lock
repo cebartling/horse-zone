@@ -56,12 +56,10 @@ GEM
     bullet (4.14.4)
       activesupport (>= 3.0.0)
       uniform_notifier (>= 1.6.0)
-    capistrano (3.3.5)
-      capistrano-stats (~> 1.1.0)
+    capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
-    capistrano-stats (1.1.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -86,7 +84,9 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
-    equalizer (0.0.10)
+    domain_name (0.5.23)
+      unf (>= 0.0.5, < 1.0.0)
+    equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.4.0)
     factory_girl (4.5.0)
@@ -101,6 +101,8 @@ GEM
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     hike (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     icalendar (2.2.2)
     ice_nine (0.11.1)
@@ -184,10 +186,11 @@ GEM
     rdoc (4.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rest-client (1.7.3)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rollbar (1.4.4)
+    rollbar (1.4.5)
       multi_json (~> 1.3)
     rspec-core (3.2.2)
       rspec-support (~> 3.2.0)
@@ -232,7 +235,7 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    stripe (1.20.3)
+    stripe (1.20.4)
       json (~> 1.8.1)
       mime-types (>= 1.25, < 3.0)
       rest-client (~> 1.4)
@@ -249,11 +252,15 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2015.1)
+    tzinfo-data (1.2015.2)
       tzinfo (>= 1.0.0)
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf (0.1.4-java)
+    unf_ext (0.0.6)
     uniform_notifier (1.8.0)
     use_case (1.0.2)
     uuidtools (2.1.5)
@@ -263,6 +270,7 @@ GEM
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
     websocket (1.2.1)
+    will_paginate (3.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
     yajl-ruby (1.2.1)
@@ -277,7 +285,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bullet
-  capistrano (~> 3.3.0)
+  capistrano
   capybara
   coffee-rails (~> 4.1.0)
   database_cleaner
@@ -310,4 +318,5 @@ DEPENDENCIES
   use_case
   uuidtools
   virtus
+  will_paginate
   yajl-ruby

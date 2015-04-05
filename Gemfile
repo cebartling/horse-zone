@@ -21,6 +21,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'rabl'
 gem 'use_case'
+gem 'will_paginate'
 gem 'virtus'
 gem 'annotate'
 gem 'uuidtools'
@@ -31,7 +32,7 @@ gem 'jwt'
 # gem 'rack-cors'
 gem 'bcrypt'
 gem 'stripe'
-gem 'capistrano', '~> 3.3.0'
+gem 'capistrano'
 gem 'swagger-blocks'
 
 group :development, :test do
