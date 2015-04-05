@@ -35,6 +35,8 @@ gem 'bcrypt'
 gem 'stripe'
 gem 'capistrano'
 gem 'swagger-blocks'
+gem 'rubocop', require: false
+gem 'rubocop-rspec'
 
 group :development, :test do
   gem 'pry'
