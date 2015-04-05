@@ -1,13 +1,7 @@
 module TenantManagement
 
   NewTenantValidator = UseCase::Validator.define do
-    validates_presence_of :email_address
-    validates_presence_of :password
-  end
-
-  SignInTenantValidator = UseCase::Validator.define do
-    validates_presence_of :email_address
-    validates_presence_of :password
+    validates_presence_of :name
   end
 
   UpdateTenantValidator = UseCase::Validator.define do
