@@ -1,5 +1,4 @@
-require_relative 'validators'
-require_relative 'pre_conditions'
+require_relative 'tenant_management'
 
 module TenantManagement
   class UpdateExistingTenantInput

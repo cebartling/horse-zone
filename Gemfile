@@ -30,6 +30,7 @@ gem 'icalendar'
 gem 'responders'
 gem 'jwt'
 # gem 'rack-cors'
+gem 'delayed_job_active_record'
 gem 'bcrypt'
 gem 'stripe'
 gem 'capistrano'
@@ -63,9 +64,6 @@ group :production, :demo do
 end
 
 # gem "font-awesome-rails"
-# gem "unicorn"
-# gem "bootstrap-sass"
-# gem "sidekiq", require: "sidekiq/web"
 # gem "sinatra"
 # gem "local_time"
 # gem "gravatar_image_tag"
