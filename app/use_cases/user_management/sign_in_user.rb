@@ -1,5 +1,4 @@
-require_relative 'validators'
-require_relative 'pre_conditions'
+require_relative 'user_management'
 
 module UserManagement
   class SignInUserInput

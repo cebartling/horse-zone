@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 20150405034214) do
 
   add_index "tenants", ["name"], name: "index_tenants_on_name", unique: true, using: :btree
 
+  create_table "tenants_users", id: false, force: :cascade do |t|
+    t.integer "tenant_id"
+    t.integer "user_id"
+  end
+
+  add_index "tenants_users", ["tenant_id"], name: "index_tenants_users_on_tenant_id", using: :btree
+  add_index "tenants_users", ["user_id"], name: "index_tenants_users_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email_address",      default: "", null: false
     t.string   "password_digest",    default: "", null: false
@@ -55,13 +63,5 @@ ActiveRecord::Schema.define(version: 20150405034214) do
   end
 
   add_index "users", ["email_address"], name: "index_users_on_email_address", unique: true, using: :btree
-
-  create_table "users_tenants", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "tenant_id"
-  end
-
-  add_index "users_tenants", ["tenant_id"], name: "index_users_tenants_on_tenant_id", using: :btree
-  add_index "users_tenants", ["user_id"], name: "index_users_tenants_on_user_id", using: :btree
 
 end
