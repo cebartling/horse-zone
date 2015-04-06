@@ -4,19 +4,16 @@ module UserManagement
   class SignInUserInput
     include Virtus.model
 
-    attribute :email, String
+    attribute :email_address, String
     attribute :password, String
   end
 
   class SignInUserCommand
     def execute(params)
-      user = User.find_by(email: params.email)
-      authenticated = user.try(:authenticate, params.password)
-      if authenticated
-        user.sign_in_count += 1
-        user.save
-      end
-      authenticated
+      authenticated_user = User.find_by_email_address(params.email_address)
+      authenticated_user.sign_in_count += 1
+      authenticated_user.save!
+      authenticated_user
     end
   end
 
@@ -25,7 +22,10 @@ module UserManagement
 
     def initialize
       input_class(UserManagement::SignInUserInput)
-      step(UserManagement::SignInUserCommand.new, validators: [UserManagement::SignInUserValidator])
+      add_pre_condition(UserManagement::UserExistsForEmailAddressPrecondition.new)
+      add_pre_condition(UserManagement::UserAuthenticatesSuccessfullyPrecondition.new)
+      step(UserManagement::SignInUserCommand.new,
+           validators: [UserManagement::SignInUserValidator])
     end
   end
 end
