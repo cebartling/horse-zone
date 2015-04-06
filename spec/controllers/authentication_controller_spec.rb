@@ -56,7 +56,7 @@ RSpec.describe AuthenticationController, type: :controller do
           let(:error_message) { json['error'] }
 
           it 'contains an error message' do
-            expect(error_message).to eq 'Invalid username or password'
+            expect(error_message).to eq 'The supplied credentials could not be used to authenticate the current session.'
           end
         end
       end

@@ -1,13 +1,6 @@
 require_relative 'user_management'
 
 module UserManagement
-  class SignInUserInput
-    include Virtus.model
-
-    attribute :email_address, String
-    attribute :password, String
-  end
-
   class SignInUserCommand
     def execute(params)
       authenticated_user = User.find_by_email_address(params.email_address)

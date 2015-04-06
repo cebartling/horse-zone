@@ -4,12 +4,31 @@ class AuthenticationController < ApplicationController
   respond_to :json
 
   def authenticate
-    user = User.find_by_email_address(params[:email_address])
+    outcome = UserManagement::SignInUser.new.execute(params)
 
-    if user && user.authenticate(params[:password])
+    outcome.pre_condition_failed do |f|
+      f.when(:user_exists_for_email_address) {
+        render json: { error: 'The supplied credentials could not be used to authenticate the current session.'},
+               status: :unauthorized
+      }
+      f.when(:user_authenticates_successfully) {
+        render json: { error: 'The supplied credentials could not be used to authenticate the current session.'},
+               status: :unauthorized
+      }
+      f.otherwise {
+        render json: { error: 'The supplied credentials could not be used to authenticate the current session.' },
+                          status: :unauthorized
+      }
+    end
+
+    outcome.failure do |input|
+      render json: { error: 'The supplied credentials could not be used to authenticate the current session.' },
+             status: :unauthorized
+    end
+
+    outcome.success do |user|
       render json: { auth_token: user.generate_auth_token }, status: :ok
-    else
-      render json: { error: 'Invalid username or password' }, status: :unauthorized
     end
   end
+
 end
