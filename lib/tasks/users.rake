@@ -7,7 +7,9 @@ namespace :users do
     found = User.find_by_email_address(email_address)
     unless found
       user = User.new email_address: email_address,
-                      password: PASSWORD
+                      password: PASSWORD,
+                      first_name: 'Christopher',
+                      last_name: 'Bartling'
       user.save!
       puts "   Added '#{user.email_address}' with password of '#{PASSWORD}'."
     end
