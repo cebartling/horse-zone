@@ -35,8 +35,6 @@ gem 'bcrypt'
 gem 'stripe'
 gem 'capistrano'
 gem 'swagger-blocks'
-gem 'rubocop', require: false
-gem 'rubocop-rspec'
 gem "newrelic_rpm"
 
 group :development, :test do
@@ -59,6 +57,9 @@ group :development do
   gem 'bullet'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'brakeman', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec'
 end
 
 group :production, :demo do
