@@ -58,8 +58,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'brakeman', require: false
-  gem 'rubocop', require: false
-  gem 'rubocop-rspec'
+  # gem 'rubocop', require: false
+  # gem 'rubocop-rspec'
 end
 
 group :production, :demo do
