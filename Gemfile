@@ -42,15 +42,15 @@ gem 'rubocop-rspec'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'timecop'
 end
 
 group :test do
   gem 'selenium-webdriver'
   gem 'capybara'
-  gem 'timecop'
-  # gem "mocha"
 end
 
 group :development do
