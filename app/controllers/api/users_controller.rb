@@ -1,8 +1,19 @@
 class Api::UsersController < ApplicationController
+
   respond_to :json
 
   def index
-    @users = []
+    outcome = UserManagement::RetrieveUsers.new.execute(params)
+
+    outcome.failure do |model|
+      respond_to do |format|
+        format.json { render status: :unprocessable_entity, json: {} }
+      end
+    end
+
+    outcome.success do |repository|
+      @users = outcome.result
+    end
   end
 
   def create
@@ -34,4 +45,5 @@ class Api::UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
