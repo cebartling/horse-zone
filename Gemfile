@@ -11,6 +11,7 @@ gem 'rails', '4.2.1'
 gem 'pg'
 
 gem 'yajl-ruby', require: 'yajl'
+gem 'nokogiri'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyrhino'
@@ -38,6 +39,11 @@ gem 'swagger-blocks'
 gem "newrelic_rpm"
 gem 'rubocop', require: false
 gem 'rubocop-rspec'
+# gem 'memcachier'
+# gem 'dalli'
+gem "chronic"
+gem "recurrence"
+gem 'premailer-rails'
 
 group :development, :test do
   gem 'pry'
@@ -67,22 +73,7 @@ group :production, :demo do
   gem 'heroku-deflater'
 end
 
-# gem "font-awesome-rails"
-# gem "sinatra"
-# gem "local_time"
-# gem "gravatar_image_tag"
-# gem "so_meta"
-# gem "chronic"
-# gem "recurrence"
-
 # gem "premailer-rails"
-
-# gem "momentjs-rails"
-# gem "bootstrap3-datetimepicker-rails"
-# gem "bootstrap-switch-rails"
-# gem "bootstrap-wysihtml5-rails"
-# gem "bootstrap-select-rails"
-# gem "autosize-rails"
 
 # gem "aws-sdk"
 
@@ -90,15 +81,11 @@ end
 # gem "rinku"
 
 # gem 'doc_raptor'
-# gem "stripe"
-# gem "jquery-ui-rails"
 # gem "active_model_serializers"
 # gem "rubyzip"
 # gem "render_anywhere", require: false
 # gem "pusher"
 # gem 'filepicker-rails'
-# gem 'memcachier'
-# gem 'dalli'
 # gem "intercom-rails"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
