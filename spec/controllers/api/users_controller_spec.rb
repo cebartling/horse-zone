@@ -107,18 +107,65 @@ RSpec.describe Api::UsersController, type: :controller do
   describe 'POST #create' do
     let(:params) do
       {
+        email_address: 'chris.bartling@horsezone.net',
+        password: 'p4$$w0rd',
+        first_name: 'Chris',
+        last_name: 'Bartling',
         format: :json
       }
     end
+    let(:newly_created_user) { FactoryGirl.create(:user) }
+
+    let!(:use_case_mock) { double(UserManagement::CreateNewUser) }
+    let!(:successful_outcome) { UseCase::SuccessfulOutcome.new(newly_created_user) }
+    let!(:failed_outcome) { UseCase::FailedOutcome.new }
 
     context 'user is authenticated to the system' do
       before :each do
         authenticate current_user
-        post :create, params
+        allow(UserManagement::CreateNewUser).to receive(:new).and_return use_case_mock
       end
 
-      it 'status code should be 204 (Created)' do
-        expect(response.status).to eq Rack::Utils.status_code(:created)
+      context 'successful outcome' do
+        before :each do
+          allow(use_case_mock).to receive(:execute).and_return successful_outcome
+        end
+
+        it 'creates a UserManagement::CreateNewUser use case' do
+          expect(UserManagement::CreateNewUser).to receive(:new)
+          post :create, params
+        end
+
+        it 'executes the UserManagement::CreateNewUser use case instance' do
+          expect(use_case_mock).to receive(:execute)
+          post :create, params
+        end
+
+        it 'status code should be 204 (Created)' do
+          post :create, params
+          expect(response.status).to eq Rack::Utils.status_code(:created)
+        end
+
+        it 'sets the Location header to new user URI' do
+          post :create, params
+          expect(response.headers['Location']).to eq api_user_path(newly_created_user)
+        end
+
+        it 'should not have an entity-body' do
+          post :create, params
+          expect(response.body).to eq ''
+        end
+      end
+
+      context 'failed outcome' do
+        before :each do
+          allow(use_case_mock).to receive(:execute).and_return failed_outcome
+        end
+
+        it 'status code should be 422 (Unprocessable Entity)' do
+          post :create, params
+          expect(response.status).to eq Rack::Utils.status_code(:unprocessable_entity)
+        end
       end
     end
 
@@ -134,21 +181,63 @@ RSpec.describe Api::UsersController, type: :controller do
   end
 
   describe 'PUT #update' do
+    let(:existing_user) { FactoryGirl.create(:user) }
     let(:params) do
       {
-        format: :json,
-        id: '1'
+        id: existing_user.id.to_s,
+        email_address: 'chris.bartling@horsezone.net',
+        password: 'p4$$w0rd',
+        first_name: 'Christopher',
+        last_name: 'Bartling',
+        format: :json
       }
     end
+
+    let!(:use_case_mock) { double(UserManagement::UpdateExistingUser) }
+    let!(:successful_outcome) { UseCase::SuccessfulOutcome.new(existing_user) }
+    let!(:failed_outcome) { UseCase::FailedOutcome.new }
 
     context 'user is authenticated to the system' do
       before :each do
         authenticate current_user
-        put :update, params
+        allow(UserManagement::UpdateExistingUser).to receive(:new).and_return use_case_mock
       end
 
-      it 'status code should be 204 (No Content)' do
-        expect(response.status).to eq Rack::Utils.status_code(:no_content)
+      context 'successful outcome' do
+        before :each do
+          allow(use_case_mock).to receive(:execute).and_return successful_outcome
+        end
+
+        it 'creates a UserManagement::UpdateExistingUser use case' do
+          expect(UserManagement::UpdateExistingUser).to receive(:new)
+          put :update, params
+        end
+
+        it 'executes the UserManagement::UpdateExistingUser use case instance' do
+          expect(use_case_mock).to receive(:execute)
+          put :update, params
+        end
+
+        it 'status code should be 204 (No Content)' do
+          put :update, params
+          expect(response.status).to eq Rack::Utils.status_code(:no_content)
+        end
+
+        it 'should not have an entity-body' do
+          put :update, params
+          expect(response.body).to eq ''
+        end
+      end
+
+      context 'failed outcome' do
+        before :each do
+          allow(use_case_mock).to receive(:execute).and_return failed_outcome
+        end
+
+        it 'status code should be 422 (Unprocessable Entity)' do
+          put :update, params
+          expect(response.status).to eq Rack::Utils.status_code(:unprocessable_entity)
+        end
       end
     end
 
@@ -164,21 +253,59 @@ RSpec.describe Api::UsersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    let(:existing_user) { FactoryGirl.create(:user) }
     let(:params) do
       {
-        format: :json,
-        id: '1'
+        id: existing_user.id.to_s,
+        format: :json
       }
     end
+
+    let!(:use_case_mock) { double(UserManagement::DeleteExistingUser) }
+    let!(:successful_outcome) { UseCase::SuccessfulOutcome.new(existing_user) }
+    let!(:failed_outcome) { UseCase::FailedOutcome.new }
 
     context 'user is authenticated to the system' do
       before :each do
         authenticate current_user
-        delete :destroy, params
+        allow(UserManagement::DeleteExistingUser).to receive(:new).and_return use_case_mock
       end
 
-      it 'status code should be 204 (No Content)' do
-        expect(response.status).to eq Rack::Utils.status_code(:no_content)
+      context 'successful outcome' do
+        before :each do
+          allow(use_case_mock).to receive(:execute).and_return successful_outcome
+        end
+
+        it 'creates a UserManagement::DeleteExistingUser use case' do
+          expect(UserManagement::DeleteExistingUser).to receive(:new)
+          delete :destroy, params
+        end
+
+        it 'executes the UserManagement::DeleteExistingUser use case instance' do
+          expect(use_case_mock).to receive(:execute)
+          delete :destroy, params
+        end
+
+        it 'returns a status code of 204 (No Content)' do
+          delete :destroy, params
+          expect(response.status).to eq Rack::Utils.status_code(:no_content)
+        end
+
+        it 'should not have an entity-body' do
+          delete :destroy, params
+          expect(response.body).to eq ''
+        end
+      end
+
+      context 'failed outcome' do
+        before :each do
+          allow(use_case_mock).to receive(:execute).and_return failed_outcome
+        end
+
+        it 'returns a status code of 422 (Unprocessable Entity)' do
+          delete :destroy, params
+          expect(response.status).to eq Rack::Utils.status_code(:unprocessable_entity)
+        end
       end
     end
 
@@ -187,7 +314,7 @@ RSpec.describe Api::UsersController, type: :controller do
         delete :destroy, params
       end
 
-      it 'status code should be 401 (Unauthorized)' do
+      it 'returns a status code of 401 (Unauthorized)' do
         expect(response.status).to eq Rack::Utils.status_code(:unauthorized)
       end
     end
