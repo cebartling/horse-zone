@@ -1,4 +1,4 @@
-rvm use --create ruby-2.2.1@horse-zone
+rvm use --create ruby-2.2.2@horse-zone
 
 
 #rvm use --create jruby-1.7.18@horse-zone

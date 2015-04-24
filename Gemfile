@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.18'
-ruby '2.2.1'
+ruby '2.2.2'
 
 gem 'rails', '4.2.1'
 
