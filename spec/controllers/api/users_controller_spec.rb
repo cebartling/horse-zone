@@ -174,8 +174,8 @@ RSpec.describe Api::UsersController, type: :controller do
         post :create, params
       end
 
-      it 'status code should be 401 (Unauthorized)' do
-        expect(response.status).to eq Rack::Utils.status_code(:unauthorized)
+      it 'status code should be 201 (Created)' do
+        expect(response.status).to eq Rack::Utils.status_code(:created)
       end
     end
   end
