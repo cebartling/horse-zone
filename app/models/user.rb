@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :tenants
 
   def generate_auth_token
-    payload = { user_id: id }
+    payload = {user_id: id}
     AuthToken.encode(payload)
   end
 end
