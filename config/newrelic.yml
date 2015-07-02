@@ -25,7 +25,7 @@ common: &default_settings
   # completely turn the agent off regardless of the other settings.
   # Valid values are true, false and auto.
   #
-  # agent_enabled: auto
+  agent_enabled: auto
 
   # Application Name Set this to be the name of your application as
   # you'd like it show up in New Relic. The service will then auto-map
@@ -141,7 +141,7 @@ common: &default_settings
     # recorded. The recorder has three modes, "off" which sends no
     # SQL, "raw" which sends the SQL statement in its original form,
     # and "obfuscated", which strips out numeric and string literals.
-    record_sql: obfuscated
+    record_sql: off
 
     # Threshold in seconds for when to collect stack trace for a SQL
     # call. In other words, when SQL statements exceed this threshold,
@@ -191,7 +191,7 @@ common: &default_settings
 development:
   <<: *default_settings
   # Turn on communication to New Relic service in development mode
-  monitor_mode: true
+  monitor_mode: false
   app_name: Horse Zone (DEVELOPMENT)
 
   # Rails Only - when running in Developer Mode, the New Relic Agent will
