@@ -7,14 +7,12 @@ module UserManagement
     end
 
     def satisfied?(params)
-      result = true
-      user = User.find_by_email_address(params.email_address)
-      authenticated_user = user.try(:authenticate, params.password)
-      unless authenticated_user
+      user = User.find_by_email(params.email_address)
+      is_authenticated = user.valid_password?(params.password)
+      unless is_authenticated
         @message = "User '#{params.email_address}' could not be authenticated using the supplied password."
-        result = false
       end
-      result
+      is_authenticated
     end
   end
 end

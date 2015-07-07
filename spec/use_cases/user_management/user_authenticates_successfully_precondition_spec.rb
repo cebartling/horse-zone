@@ -9,7 +9,7 @@ RSpec.describe UserManagement::UserAuthenticatesSuccessfullyPrecondition do
 
     context 'pre-existing user email address parameter' do
       let(:input) do
-        UserManagement::SignInUserInput.new({email_address: existing_user.email_address,
+        UserManagement::SignInUserInput.new({email_address: existing_user.email,
                                              password: 'Pa$$w0rd'})
       end
 
@@ -20,7 +20,7 @@ RSpec.describe UserManagement::UserAuthenticatesSuccessfullyPrecondition do
 
     context 'non-existent user email address parameter' do
       let(:input) do
-        UserManagement::SignInUserInput.new({email_address: existing_user.email_address,
+        UserManagement::SignInUserInput.new({email_address: existing_user.email,
                                              password: 'Pa$$w0rdxdfjsldh'})
       end
 

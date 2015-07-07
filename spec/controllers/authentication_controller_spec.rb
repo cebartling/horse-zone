@@ -11,7 +11,7 @@ RSpec.describe AuthenticationController, type: :controller do
     context 'when credentials will successfully authenticate' do
       let(:params) do
         {
-          email_address: current_user.email_address,
+          email_address: current_user.email,
           password: 'Pa$$w0rd',
           format: :json
         }
@@ -40,7 +40,7 @@ RSpec.describe AuthenticationController, type: :controller do
     context 'when credentials will fail to authenticate' do
       let(:params) do
         {
-          email_address: current_user.email_address,
+          email_address: current_user.email,
           password: 'B4dP4%%word',
           format: :json
         }

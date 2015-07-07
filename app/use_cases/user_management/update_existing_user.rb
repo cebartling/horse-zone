@@ -14,7 +14,7 @@ module UserManagement
     def execute(params)
       user = User.find(params.id)
       if user
-        user.email_address = params.email_address if params.email_address
+        user.email = params.email_address if params.email_address
         user.first_name = params.first_name if params.first_name
         user.last_name = params.last_name if params.last_name
         user.save!

@@ -48,7 +48,6 @@ class User < ActiveRecord::Base
          :lockable,
          :timeoutable
 
-  has_secure_password
   has_and_belongs_to_many :tenants
 
   def generate_auth_token

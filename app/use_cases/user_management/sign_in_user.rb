@@ -3,7 +3,7 @@ require_relative 'user_management'
 module UserManagement
   class SignInUserCommand
     def execute(params)
-      authenticated_user = User.find_by_email_address(params.email_address)
+      authenticated_user = User.find_by_email(params.email_address)
       authenticated_user.sign_in_count += 1
       authenticated_user.save!
       authenticated_user

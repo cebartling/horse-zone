@@ -8,7 +8,7 @@ RSpec.describe UserManagement::SignInUser do
     let(:outcome) { use_case.execute(params) }
 
     context 'authentication' do
-      let(:params) { {email_address: existing_user.email_address, password: 'Pa$$w0rd'} }
+      let(:params) { {email_address: existing_user.email, password: 'Pa$$w0rd'} }
 
       it 'should execute successfully' do
         expect(outcome.success?).to be_truthy
@@ -37,7 +37,7 @@ RSpec.describe UserManagement::SignInUser do
       end
 
       context 'invalid password' do
-        let(:params) { {email_address: existing_user.email_address, password: 'Pa$$w0rdxyzzz'} }
+        let(:params) { {email_address: existing_user.email, password: 'Pa$$w0rdxyzzz'} }
 
         it 'should fail execution' do
           expect(outcome.success?).to be_falsey
@@ -61,7 +61,7 @@ RSpec.describe UserManagement::SignInUser do
       end
 
       context 'missing password' do
-        let(:params) { {email_address: existing_user.email_address, password: nil} }
+        let(:params) { {email_address: existing_user.email, password: nil} }
 
         it 'should fail execution' do
           expect(outcome.success?).to be_falsey

@@ -19,11 +19,11 @@ RSpec.describe UserManagement::CreateNewUser do
       end
 
       it 'new user should have email address set' do
-        expect(outcome.result.email_address).to eq params[:email_address]
+        expect(outcome.result.email).to eq params[:email_address]
       end
 
-      it 'new user should have digested password set' do
-        expect(outcome.result.password_digest).not_to be_nil
+      it 'new user should have the encrypted password set' do
+        expect(outcome.result.encrypted_password).not_to be_nil
       end
     end
 

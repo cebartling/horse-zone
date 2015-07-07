@@ -11,7 +11,7 @@ RSpec.describe UserManagement::UserExistsForEmailAddressPrecondition do
     end
 
     context 'pre-existing user email address parameter' do
-      let(:input) { UserManagement::SignInUserInput.new({email_address: existing_user.email_address}) }
+      let(:input) { UserManagement::SignInUserInput.new({email_address: existing_user.email}) }
 
       it 'causes pre-condition to pass' do
         expect(@outcome).to be_truthy

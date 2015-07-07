@@ -12,7 +12,7 @@ module UserManagement
 
   class CreateNewUserCommand
     def execute(params)
-      new_user = User.new(email_address: params.email_address, password: params.password)
+      new_user = User.new(email: params.email_address, password: params.password)
       new_user.save!
       new_user
     end
