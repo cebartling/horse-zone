@@ -1,7 +1,14 @@
+@import "variable-overrides";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "carousel";
+@import "alerts";
 
 body {
   margin-top: 20px;
 }
+
+.header-spaced {
+  margin-top: 60px;
+}
+
