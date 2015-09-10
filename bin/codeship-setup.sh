@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-export RUBY_VERSION="ruby-2.2.2"
+export RUBY_VERSION="ruby-2.2.3"
 
 #rvm install $RUBY_VERSION
 rvm use "$RUBY_VERSION@horse-zone" --create
