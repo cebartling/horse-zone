@@ -1,6 +1,11 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 Rails.application.routes.draw do
+  resources :lessons
+  resources :schedules
+  resources :tenant_user_roles
+  resources :roles
+  resources :tenants
   scope '/api/v1' do
     resources :users
   end

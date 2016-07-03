@@ -1,0 +1,2 @@
+class TenantUserRole < ApplicationRecord
+end
