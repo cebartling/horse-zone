@@ -6,5 +6,7 @@ class CreateTenants < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_index :tenants, :name, unique: true
   end
 end

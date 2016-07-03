@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+if Role.where(lookup_code: 'OWNER').count == 0
+  Role.create(lookup_code: 'OWNER', )
+end

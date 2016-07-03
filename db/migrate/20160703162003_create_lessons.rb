@@ -9,6 +9,6 @@ class CreateLessons < ActiveRecord::Migration[5.0]
     end
 
     add_reference :lessons, :schedules, foreign_key: true
-    add_reference :lessons, :tenant_user_roles, foreign_key: true, column: :instructor_id
+    add_reference :lessons, :tenant_user_roles, foreign_key: true, column: :instructor_id, index: true
   end
 end

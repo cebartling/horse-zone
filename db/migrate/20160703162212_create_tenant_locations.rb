@@ -12,6 +12,6 @@ class CreateTenantLocations < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_reference :tenant_locations, :tenants, foreign_key: true
+    add_reference :tenant_locations, :tenants, foreign_key: true, index: true
   end
 end

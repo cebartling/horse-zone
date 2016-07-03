@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20160703162212) do
     t.boolean  "active",                 default: true, null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.index ["lookup_code"], name: "index_roles_on_lookup_code", unique: true, using: :btree
+    t.index ["name"], name: "index_roles_on_name", unique: true, using: :btree
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -76,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160703162212) do
     t.boolean  "active",                 default: true, null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.index ["name"], name: "index_tenants_on_name", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

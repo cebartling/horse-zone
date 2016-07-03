@@ -7,5 +7,8 @@ class CreateRoles < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_index :roles, :lookup_code, unique: true
+    add_index :roles, :name, unique: true
   end
 end

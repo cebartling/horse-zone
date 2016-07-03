@@ -8,6 +8,6 @@ class CreateSchedules < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_reference :schedules, :tenants, foreign_key: true
+    add_reference :schedules, :tenants, foreign_key: true, index: true
   end
 end

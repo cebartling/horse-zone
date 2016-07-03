@@ -6,8 +6,8 @@ class CreateTenantUserRoles < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_reference :tenant_user_roles, :tenants, foreign_key: true
-    add_reference :tenant_user_roles, :users, foreign_key: true
-    add_reference :tenant_user_roles, :roles, foreign_key: true
+    add_reference :tenant_user_roles, :tenants, foreign_key: true, index: true
+    add_reference :tenant_user_roles, :users, foreign_key: true, index: true
+    add_reference :tenant_user_roles, :roles, foreign_key: true, index: true
   end
 end
